@@ -1,0 +1,82 @@
+<b> Hello ! It is working !</b>
+
+<?php
+// Independent configuration
+require  'medoo.php';
+ 
+$database = new medoo([
+	// required
+	'database_type' => 'mysql',
+	'database_name' => 'name',
+	'server' => 'localhost',
+	'username' => 'your_username',
+	'password' => 'your_password',
+	'charset' => 'utf8',
+ 
+	// optional
+	'port' => 3306,
+	// driver_option for connection, read more from http://www.php.net/manual/en/pdo.setattribute.php
+	'option' => [
+		PDO::ATTR_CASE => PDO::CASE_NATURAL
+	]
+]);
+ 
+$database->insert("account", [
+	"user_name" => "foo",
+	"email" => "foo@bar.com"
+]);
+ 
+// Or just open the medoo.php and edit some configuration on the top of the file,
+// So that you can use it directly without configure again in the further.
+// For MySQL, MariaDB MSSQL, PostgreSQL, Sybase type name
+// MySQL -> mysql
+// MariaDB -> mariadb
+// MSSQL -> mssql
+// PostgreSQL -> pgsql
+// Oracle -> oracle
+// Sybase -> sybase
+class medoo
+{
+	protected $database_type = 'mysql'; // The type name of database
+ 
+	protected $server = 'localhost';
+	
+	protected $username = 'your_username';
+	
+	protected $password = 'your_password';
+ 
+	// Optional
+	protected $database_name = 'my_datebase';
+ 
+	protected $port = 3306;
+ 
+	protected $charset = 'utf8';
+	....
+ 
+// And get started!
+require_once 'medoo.php';
+ 
+$database = new medoo();
+ 
+$database->insert("account", [
+	"user_name" => "foo",
+	"email" => "foo@bar.com"
+]);
+ 
+// You can also ignore configuring the $database_name,
+// and get started with:
+class medoo
+{
+	protected $database_type = 'mysql'; // The type name of database
+ 
+	protected $server = 'localhost';
+	
+	protected $username = 'your_username';
+	
+	protected $password = 'your_password';
+ 
+	// Optional
+	protected $database_name = '';
+ 
+$database = new medoo('my_database');
+?>
