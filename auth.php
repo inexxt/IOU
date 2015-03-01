@@ -19,7 +19,7 @@ FacebookSession::setDefaultApplication($app_id,$app_secret);
 
 try
 {
-	$helper = new FacebookRedirectLoginHelper('http://localhost/~bandi/auth.php');
+	$helper = new FacebookRedirectLoginHelper('http://localhost/~bandi/IOU/auth.php');
 } catch(Exception $e) { }
 
 echo '<a href="' . $helper->getLoginUrl() . '">Login with Facebook</a>';
@@ -27,12 +27,12 @@ echo '<a href="' . $helper->getLoginUrl() . '">Login with Facebook</a>';
 if(array_key_exists("code", $_REQUEST))
 {
 	$token_url = "https://graph.facebook.com/oauth/access_token?"
-. "client_id=" . $app_id . "&redirect_uri=http://localhost/~bandi/auth.php&client_secret=" . $app_secret . "&code=" . $_REQUEST["code"];
+. "client_id=" . $app_id . "&redirect_uri=http://localhost/~bandi/IOU/auth.php&client_secret=" . $app_secret . "&code=" . $_REQUEST["code"];
 	$response = file_get_contents($token_url);
 	$params = null;
 	parse_str($response, $params);
 	$accessToken = $params['access_token'];
-	header("Location: index.php?action=auth&accessToken=" . $accessToken);
+	header("Location: index.php?ACTION=AUTH&ACCESSTOKEN=" . $accessToken);
 	exit;
 }
 
