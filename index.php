@@ -18,13 +18,13 @@
 				case "LOANS_LIST":
 						return listOfLoans($q["USER"]->getId(), $session);
 					break;
-				case "NEW":
+				case "NEW_LOAN":
 						return array("exit_code"=>createNewLoan($q));
 					break;
-				case "CHANGE":
+				case "CHANGE_LOAN":
 						return array("exit_code"=>changeLoan($q["LID"], $q));
 					break;
-				case "REVIEW_REQUEST":
+				case "REVIEW_LOAN":
 						return array("exit_code"=>reviewRequest($q["LID"], $q["action"]));
 					break;
 			}
@@ -54,10 +54,12 @@
 						$me = (new FacebookRequest($session, 'GET', '/me'))->execute()->getGraphObject(GraphUser::className());
 						$req["ACTION"] = "PROFILE";
 						$req["USER"] = $me;
+						$req["ACCESSTOKEN"] = $accessToken;
 						$result = deal($req, $session);
 						$req["ACTION"] = "LOANS_LIST";
 						$result2 = deal($req, $session);
-						echo json_encode(array_merge($result, $result2));
+
+						echo json_encode(array($result, $result2));
 					} 
 					break;
 

@@ -32,7 +32,7 @@ if(array_key_exists("code", $_REQUEST))
 	$params = null;
 	parse_str($response, $params);
 	$accessToken = $params['access_token'];
-	header("Location: index.php?ACTION=AUTH&ACCESSTOKEN=" . $accessToken);
+	header("Location: index.php?ACTION=LOAN&ACCESSTOKEN=" . $accessToken);
 	exit;
 }
 

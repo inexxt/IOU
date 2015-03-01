@@ -34,7 +34,8 @@ function pullUserFromDatabase($graphUser)
 	if($rowcount == 0)
 		createNewUser($graphUser);
 
-	$row = mysqli_fetch_array($result);
+	$result = mysqli_query($con, $sql);
+	$row = mysqli_fetch_assoc($result);
 	mysqli_close($con);
 	return $row;
 }
