@@ -3,7 +3,7 @@
 	<?php
 		session_start();
 
-		include("database.php");
+		require_once("database.php");
 
 		function deal($q, $session)
 		{
@@ -29,9 +29,6 @@
 					break;
 			}
 		}
-
-		define('FACEBOOK_SDK_V4_SRC_DIR', __DIR__ . '/fb/');
-		require __DIR__ . '/autoload.php';
 
 		use Facebook\FacebookSession;
 		use Facebook\FacebookRequest;

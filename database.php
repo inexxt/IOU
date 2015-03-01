@@ -1,14 +1,13 @@
 <?php
 
-include("friends_list.php");
+define('FACEBOOK_SDK_V4_SRC_DIR', __DIR__ . '/fb/');
+require __DIR__ . '/autoload.php';
+
+require_once("friends_list.php");
 
 function connect_db()
 {
-	$con = mysqli_connect('localhost','root','ee==mmcc22');
-	if (!$con) {
-		die('Could not connect: ' . mysqli_error($con));
-	}
-
+	$con = mysqli_connect('localhost','root','ee==mmcc22') or die('Could not connect: ' . mysqli_error($con));
 	mysqli_select_db($con,"IOU_database");
 	return $con;
 }
@@ -16,11 +15,9 @@ function connect_db()
 function createNewUser($graphUser)
 {
 	$conn = connect_db();
-	$sql = "INSERT INTO USERS (UID, name, paid_on_time, not_paid_on_time) VALUES (" . $graphUser->getId() . ", " . $graphUser->getName() . ",0,0)";
-	if($conn->query($sql) == TRUE)
-		echo "Successfully created user. ";
-	else
-		echo "Failed creating user. ";
+	$sql = "INSERT INTO USERS VALUES ('" . $graphUser->getId() . "', '" . $graphUser->getName() . "',0,0)";
+	if(!$conn->query($sql))
+		echo "Failed creating user. " . $conn->error;
 	$conn->close();
 }
 

@@ -1,16 +1,12 @@
-
 <?php
 
-define('FACEBOOK_SDK_V4_SRC_DIR', __DIR__ . '/fb/');
-require __DIR__ . '/autoload.php';
+require_once("database.php");
 
 use Facebook\FacebookSession;
 use Facebook\FacebookRequest;
 use Facebook\GraphUser;
 use Facebook\FacebookRequestException;
 use Facebook\FacebookRedirectLoginHelper;
-
-include("database.php");
 
 function userProfile($id, $session)
 {
@@ -38,11 +34,12 @@ function listOfFriends($id, $session)
 
 	$responce_friends = array();
 	
-	foreach ($friends["data"] as $value) {
+	foreach ($friends["data"] as $value)
+	{
 		$friend = array (
-						"id" = $value["id"],
-						"name" = $value["name"],
-						"rating" = pullUserFromDatabase($id)["rating"],
+						"id" => $value["id"],
+						"name" => $value["name"],
+						"rating" => pullUserFromDatabase($id)["rating"],
 						);
 		$responce_friends[] = $friend;
 	}
@@ -54,16 +51,19 @@ function listOfLoans($id, $session)
 {
 	$con = connect_db();
 	
-	$sql="SELECT * FROM LOANS WHERE 1UID = '".$id."'";
+	$sql = "SELECT * FROM LOANS WHERE 1UID = '".$id."'";
 	$result = mysqli_query($con, $sql);
+
+	$response["borrowers"] = null;
 
 	while($row = mysqli_fetch_array($result)) 
 	{
 		$response["borrowers"][] = $row;
 	}
-	foreach($response as $row) {
-		$row["borrower"][] = pullUserFromDatabase($row["2UID"])
-		unset($row["1UID"], $row["2UID"]);
+	foreach($response as $row)
+	{
+		$row["borrower"][] = pullUserFromDatabase($row["2UID"]);
+		//unset($row["1UID"], $row["2UID"]);
 	}
 	
 	$sql="SELECT * FROM LOANS WHERE 2UID = '".$id."'";
@@ -72,8 +72,9 @@ function listOfLoans($id, $session)
 		$response[] = $row;
 	}
 	foreach($response as $row) {
-		$row["lender"][] = pullUserFromDatabase($row["2UID"])
-		unset($row["1UID"], $row["2UID"]);
+		$row["lender"][] = pullUserFromDatabase($row["2UID"]);
+		//unset($row["1UID"]);
+		//unset($row["2UID"]);
 	}
 	
 	mysqli_close($con);
@@ -100,7 +101,6 @@ function listOfHistoryLoans($id, $session)
 function createNewLoan($q)
 {
 	$con = connect_db();
-	
 	$sql="INSERT INTO LOANS WHERE VALUES ".array_values($q);
 	$result = mysqli_query($con, $sql);
 	return $result;
