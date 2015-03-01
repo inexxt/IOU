@@ -10,13 +10,14 @@
 			switch ($q["ACTION"]) 
 			{
 				case "PROFILE":
-						return pullUserFromDatabase($q["USER"]);
+						return pullUserFromDatabase($q["USER"], $session);
 					break;
 				case "FRIENDS_LIST":
 						return listOfFriends($q["USER"]->getId(), $session);
 					break;
 				case "LOANS_LIST":
 						return listOfLoans($q["USER"]->getId(), $session);
+						print_r($q);
 					break;
 				case "NEW_LOAN":
 						return array("exit_code"=>createNewLoan($q));
@@ -38,8 +39,7 @@
 
 		FacebookSession::setDefaultApplication('360281824177162','121b16cc09ab6bcfa05cc43db1b0350a');
 
-		$req = $_REQUEST;
-
+		$req = $_POST;
 		if(array_key_exists("ACTION", $req) && array_key_exists("ACCESSTOKEN", $req))
 		{
 			$accessToken = $req["ACCESSTOKEN"];
@@ -60,7 +60,7 @@
 						$result2 = deal($req, $session);
 
 						echo json_encode(array($result, $result2));
-					} 
+					}
 					break;
 				default:
 					$me = (new FacebookRequest($session, 'GET', '/me'))->execute()->getGraphObject(GraphUser::className());

@@ -58,7 +58,7 @@ function listOfLoans($id, $session)
 
 	while($row = mysqli_fetch_array($result)) 
 	{
-		$response["borrowers"][] = $row;
+		$response[] = $row;
 	}
 	foreach($response as $row)
 	{
@@ -102,8 +102,23 @@ function listOfHistoryLoans($id, $session)
 function createNewLoan($q)
 {
 	$con = connect_db();
-	$sql="INSERT INTO LOANS WHERE VALUES ".array_values($q);
+	print("bb\n</br>");
+	$idList = array_values($q);
+	
+	unset($q["ACCESSTOKEN"]);
+	unset($q["USER"]);
+	unset($q["ACTION"]);
+	
+	print_r($q);
+	foreach($idList as $v)
+	{
+		print_r($v);
+		print("</br>");
+	}
+	$sql="INSERT INTO LOANS (".implode(',',array_keys($q)).") VALUES ('".implode("','",array_values($q))."')";
+	print($sql);
 	$result = mysqli_query($con, $sql);
+	print($result);
 	return $result;
 }
 
