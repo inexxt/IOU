@@ -1,7 +1,6 @@
 <html>
 <body>
 	<?php
-		// testing testingtestingtestingtestingtestingtestingtesting
 		session_start();
 
 		require_once("database.php");

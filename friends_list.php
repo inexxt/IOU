@@ -54,7 +54,7 @@ function listOfLoans($id, $session)
 	$sql = "SELECT * FROM LOANS WHERE 1UID = '".$id."'";
 	$result = mysqli_query($con, $sql);
 
-	$response["borrowers"] = null;
+	$response = array();
 
 	while($row = mysqli_fetch_array($result)) 
 	{
@@ -71,7 +71,8 @@ function listOfLoans($id, $session)
 	while($row = mysqli_fetch_array($result)) {
 		$response[] = $row;
 	}
-	foreach($response as $row) {
+	foreach($response as $row)
+	{
 		$row["lender"][] = pullUserFromDatabase($row["2UID"]);
 		//unset($row["1UID"]);
 		//unset($row["2UID"]);
