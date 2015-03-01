@@ -1,6 +1,15 @@
 
 <?php
 
+define('FACEBOOK_SDK_V4_SRC_DIR', __DIR__ . '/fb/');
+require __DIR__ . '/autoload.php';
+
+use Facebook\FacebookSession;
+use Facebook\FacebookRequest;
+use Facebook\GraphUser;
+use Facebook\FacebookRequestException;
+use Facebook\FacebookRedirectLoginHelper;
+
 include("database.php");
 
 function userProfile($id, $session)
@@ -12,6 +21,7 @@ function userProfile($id, $session)
 	);
 	$response = $request->execute();
 	$userProfile = $response->getGraphObject();
+	$userProfile["rating"] = pullUserFromDatabase($id)["rating"];
 	return $userProfile;
 }
 
@@ -49,11 +59,11 @@ function listOfLoans($id, $session)
 
 	while($row = mysqli_fetch_array($result)) 
 	{
-		unset($row["1UID"], $row["2UID"]);
 		$response["borrowers"][] = $row;
 	}
 	foreach($response as $row) {
-		$row["borrower"] = pullUserFromDatabase($row["2UID"])
+		$row["borrower"][] = pullUserFromDatabase($row["2UID"])
+		unset($row["1UID"], $row["2UID"]);
 	}
 	
 	$sql="SELECT * FROM LOANS WHERE 2UID = '".$id."'";
@@ -62,13 +72,38 @@ function listOfLoans($id, $session)
 		$response[] = $row;
 	}
 	foreach($response as $row) {
+		$row["lender"][] = pullUserFromDatabase($row["2UID"])
 		unset($row["1UID"], $row["2UID"]);
-		$row["lenders"][] = pullUserFromDatabase($row["2UID"])
 	}
 	
 	mysqli_close($con);
+	return $response;
+}
+
+
+function listOfHistoryLoans($id, $session)
+{
+	$con = connect_db();
 	
-	return $row;
+	$sql="SELECT * FROM LOANS WHERE (1UID = '".$id."' 2UID = '".$id."') AND COMPLETED = 1";
+	$result = mysqli_query($con, $sql);
+
+	while($row = mysqli_fetch_array($result)) 
+	{
+		$response[] = $row;
+	}
+	
+	mysqli_close($con);
+	return $response;
+}
+
+function createNewLoan($q)
+{
+	$con = connect_db();
+	
+	$sql="INSERT INTO LOANS WHERE VALUES ".array_values($q);
+	$result = mysqli_query($con, $sql);
+	return $result;
 }
 
 ?>

@@ -26,7 +26,7 @@ function verify($UID, $pass)
 function pullUserFromDatabase($id)
 {
 	$con = connect_db();
-	$sql="SELECT rating FROM USERS WHERE UID = '".$id."'";
+	$sql="SELECT * FROM USERS WHERE UID = '".$id."'";
 	$result = mysqli_query($con, $sql);
 
 	while($row = mysqli_fetch_array($result)) {
@@ -34,3 +34,11 @@ function pullUserFromDatabase($id)
 		return $row;
 	}
 }
+
+function createNewLoan($q)
+{
+	foreach(array_keys($q) as $key)
+	{
+		
+
+?>
