@@ -2,7 +2,6 @@
 
 function connect_db()
 {
-	$con = mysql_connect('localhost','root','');
 	$con = mysql_connect('localhost','root','ee==mmcc22');
 	if (!$con) {
 		die('Could not connect: ' . mysqli_error($con));
