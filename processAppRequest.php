@@ -5,13 +5,13 @@ function deal($q, $session)
 	switch ($q["ACTION"]) 
 	{
 		case "PROFILE":
-				return pullUserFromDatabase($q["UID"]);
+				return pullUserFromDatabase($q["USER"]);
 			break;
 		case "FRIENDS_LIST":
-				return listOfFriends($q["UID"], $session);
+				return listOfFriends($q["USER"]->getId(), $session);
 			break;
 		case "LOANS_LIST":
-				return listOfLoans($q["UID"], $session));
+				return listOfLoans($q["USER"]->getId(), $session));
 			break;
 		case "NEW":
 				return array("exit_code"=>createNewLoan($q));
