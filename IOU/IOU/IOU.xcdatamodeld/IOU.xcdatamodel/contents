@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Person" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="borrowed" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Transaction" inverseName="borrower" inverseEntity="Transaction" syncable="YES"/>
+        <relationship name="lended" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Transaction" inverseName="lender" inverseEntity="Transaction" syncable="YES"/>
+    </entity>
+    <entity name="Transaction" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="borrower" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="borrowed" inverseEntity="Person" syncable="YES"/>
+        <relationship name="lender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="lended" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Transaction" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Person" positionX="-54" positionY="18" width="128" height="118"/>
+    </elements>
 </model>

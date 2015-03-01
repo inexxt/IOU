@@ -7,7 +7,7 @@ require_once("friends_list.php");
 
 function connect_db()
 {
-	$con = mysqli_connect('localhost','root','') or die('Could not connect: ' . mysqli_error($con));
+	$con = mysqli_connect('localhost','root','ee==mmcc22') or die('Could not connect: ' . mysqli_error($con));
 	mysqli_select_db($con,"IOU_database");
 	return $con;
 }
@@ -24,22 +24,28 @@ function createNewUser($graphUser)
 function calculateTotal($id, $session, $which)
 {
 	$list = listOfLoans($id, $session);
-	$borrowSum = 0;
+	$borrowedSum = 0;
 	$owedSum = 0;
 	if($which == "Owed")
 	{
-		foreach($list["borrower"] as $bor)
+		if(array_key_exists("borrower", $list))
 		{
-			$borrowedSum += $bor["amount"];
+			foreach($list["borrower"] as $bor)
+			{
+				$borrowedSum += $bor["amount"];
+			}
 		}
 		return $borrowedSum;
 	}
 	
 	if($which == "Borrowed")
 	{
-		foreach($list["lender"] as $bor)
+		if(array_key_exists("lender", $list))
 		{
-			$owedSum += $bor["amount"];
+			foreach($list["lender"] as $bor)
+			{
+				$owedSum += $bor["amount"];
+			}
 		}
 		return $owedSum;
 	}
@@ -62,7 +68,7 @@ function pullUserFromDatabase($graphUser, $session)
 	$row = mysqli_fetch_assoc($result);
 	mysqli_close($con);
 	$row[] = $graphUser;
-	$row["totalOwed"] = calculateTotal($graphUser->getId, $session, "Owed");
-	$row["totalBorrowed"] = calculateTotal($graphUser->getId, $session, "Borrowed");
+	$row["totalOwed"] = calculateTotal($graphUser->getId(), $session, "Owed");
+	$row["totalBorrowed"] = calculateTotal($graphUser->getId(), $session, "Borrowed");
 	return $row;
 }

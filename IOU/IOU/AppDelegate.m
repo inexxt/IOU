@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "AFNetworking.h"
+#import "HomeTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -14,10 +16,34 @@
 
 @implementation AppDelegate
 
+-(void)didLogin
+{
+    NSLog(@"asdf");
+    UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Main"
+                                                  bundle:nil];
+    HomeTableViewController* vc = [sb instantiateViewControllerWithIdentifier:@"HomeTableViewController"];
+    vc.accessToken = [[[FBSession activeSession] accessTokenData] accessToken];
+    [self.window setRootViewController:[[UINavigationController alloc] initWithRootViewController:vc]];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    return YES;
+    [FBLoginView class];
+    ((LoginViewController *)self.window.rootViewController).delegate = self;
+    return NO;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
+    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    
+    // You can add your app-specific url handling code here if needed
+    
+    return wasHandled;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
