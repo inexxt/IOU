@@ -2,12 +2,10 @@
 
 function deal($q, $session)
 {
-	if(!verify($q["UID"], $q["our_cookie"]) return json_encode(array("exit_code"=>-1));
-
 	switch ($q["ACTION"]) 
 	{
 		case "PROFILE":
-				return userProfile($q["UID"], $session);
+				return pullUserFromDatabase($q["UID"]);
 			break;
 		case "FRIENDS_LIST":
 				return listOfFriends($q["UID"], $session);
@@ -15,10 +13,10 @@ function deal($q, $session)
 		case "LOANS_LIST":
 				return listOfLoans($q["UID"], $session));
 			break;
-		case "NEW":
+		case "NEW_LOAN":
 				return array("exit_code"=>createNewEntry($q["fb_name1"], $q["fb_name2"], $q["amount"], $q["due_date"])));
 			break;
-		case "CHANGE":
+		case "CHANGE_LOAN":
 				return (array("exit_code"=>changeEntry($q["LID"], $q["fb_name1"], $q["fb_name2"], $q["amount"], $q["due_date"], $q["completed"])));
 			break;
 		case "REVIEW_REQUEST":
@@ -26,4 +24,3 @@ function deal($q, $session)
 			break;
 	}
 }
-
