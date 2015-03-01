@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>B55569EE-3C94-44B8-8DF2-19F4DF23D760</string>
+	<string>62A3F343-DA9B-4CC5-AA8C-9E8DBBA8E1D2</string>
 	<key>IDESourceControlProjectName</key>
 	<string>IOU</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>F3E4C0C6C00FD6E02FBC5E9094122754FAAA4512</key>
-		<string>https://github.com/AxelGoetz/App-Development.git</string>
+		<key>C21DEC9249995BED57CC0613A0856C26FE40C383</key>
+		<string>https://github.com/inexxt/IOU.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>IOU/IOU.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>F3E4C0C6C00FD6E02FBC5E9094122754FAAA4512</key>
+		<key>C21DEC9249995BED57CC0613A0856C26FE40C383</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/AxelGoetz/App-Development.git</string>
+	<string>https://github.com/inexxt/IOU.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>F3E4C0C6C00FD6E02FBC5E9094122754FAAA4512</string>
+	<string>C21DEC9249995BED57CC0613A0856C26FE40C383</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F3E4C0C6C00FD6E02FBC5E9094122754FAAA4512</string>
+			<string>C21DEC9249995BED57CC0613A0856C26FE40C383</string>
 			<key>IDESourceControlWCCName</key>
-			<string>App-Development</string>
+			<string>IOU</string>
 		</dict>
 	</array>
 </dict>

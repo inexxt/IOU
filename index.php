@@ -50,7 +50,7 @@
 					if(is_null($session))
 						printf("failed to authenticate");
 					else
-					{  
+					{
 						$me = (new FacebookRequest($session, 'GET', '/me'))->execute()->getGraphObject(GraphUser::className());
 						$req["ACTION"] = "PROFILE";
 						$req["USER"] = $me;
@@ -62,7 +62,6 @@
 						echo json_encode(array($result, $result2));
 					} 
 					break;
-
 				default:
 					$me = (new FacebookRequest($session, 'GET', '/me'))->execute()->getGraphObject(GraphUser::className());
 					$req["USER"] = $me;

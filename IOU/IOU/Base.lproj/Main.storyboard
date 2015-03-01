@@ -1,43 +1,86 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FBE-Vl-vXM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
-        <scene sceneID="uHX-fe-0QZ">
+        <scene sceneID="xn0-RM-qZm">
             <objects>
-                <navigationController id="Z2m-uu-rFW" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jr2-Nc-wjd">
+                <navigationController id="FBE-Vl-vXM" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lfm-TJ-nrW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="YCV-un-4gi" kind="relationship" relationship="rootViewController" id="IPq-MM-kYI"/>
+                        <segue destination="PaU-dQ-Pym" kind="relationship" relationship="rootViewController" id="RFR-Aa-7ux"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hor-1E-yZF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LLV-oP-AME" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-140" y="-130"/>
+            <point key="canvasLocation" x="-31" y="293"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="f3c-cA-1v7">
+        <!--Name-->
+        <scene sceneID="Gyl-25-QYo">
             <objects>
-                <viewController id="YCV-un-4gi" sceneMemberID="viewController">
+                <viewController id="PaU-dQ-Pym" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PWr-j2-dKH"/>
-                        <viewControllerLayoutGuide type="bottom" id="9Yc-0c-PaT"/>
+                        <viewControllerLayoutGuide type="top" id="kJS-bB-vaO"/>
+                        <viewControllerLayoutGuide type="bottom" id="pXp-s4-IOy"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pHm-9w-Ppf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="8d0-tM-DiW">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="9qL-QI-QYN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ahc-sm-bbc">
+                                <rect key="frame" x="150" y="255" width="300" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lii-7e-9XD">
+                                <rect key="frame" x="140" y="165" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You Owe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4P0-aP-4HU">
+                                <rect key="frame" x="30" y="111" width="263" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tt5-BL-jWV">
+                                <rect key="frame" x="392" y="164" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You Owe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xlz-J0-6OF">
+                                <rect key="frame" x="282" y="111" width="263" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Wur-ie-v8W"/>
+                    <navigationItem key="navigationItem" title="Name" id="2eZ-P8-PMq">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="g4L-2o-Ph7"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="lentLabel" destination="Xlz-J0-6OF" id="esZ-df-LR6"/>
+                        <outlet property="oweLabel" destination="4P0-aP-4HU" id="JbR-7a-Ii5"/>
+                        <outlet property="owedMoney" destination="lii-7e-9XD" id="Omu-DF-XcE"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uxZ-ms-mjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tce-Za-3tf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="596" y="-99"/>
+            <point key="canvasLocation" x="728" y="285"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Background.jpg" width="63" height="111"/>
+    </resources>
 </document>

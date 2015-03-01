@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  UIViewController_HomeViewController.h
 //  IOU
 //
 //  Created by Bandi Enkh-Amgalan on 3/1/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface UIViewController ()
 
 @end
-
