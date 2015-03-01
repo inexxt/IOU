@@ -3,6 +3,8 @@
 	<?php
 		session_start();
 
+		include("database.php");
+
 		function deal($q, $session)
 		{
 			switch ($q["ACTION"]) 
@@ -61,7 +63,7 @@
 						echo json_encode(array_merge($result, $result2));
 					} 
 					break;
-					
+
 				default:
 					$me = (new FacebookRequest($session, 'GET', '/me'))->execute()->getGraphObject(GraphUser::className());
 					$req["USER"] = $me;

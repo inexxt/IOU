@@ -1,8 +1,10 @@
 <?php
 
+include("friends_list.php");
+
 function connect_db()
 {
-	$con = mysql_connect('localhost','root','ee==mmcc22');
+	$con = mysqli_connect('localhost','root','ee==mmcc22');
 	if (!$con) {
 		die('Could not connect: ' . mysqli_error($con));
 	}
@@ -19,7 +21,7 @@ function createNewUser($graphUser)
 		echo "Successfully created user. ";
 	else
 		echo "Failed creating user. ";
-	$conn->close;
+	$conn->close();
 }
 
 function pullUserFromDatabase($graphUser)
@@ -30,9 +32,12 @@ function pullUserFromDatabase($graphUser)
 	$result = mysqli_query($con, $sql);
 	
 	// 0 users found -> create new user
-	if(mysql_num_rows($result) == 0) createNewUser($graphUser);
+	$rowcount = mysqli_num_rows($result);
+
+	if($rowcount == 0)
+		createNewUser($graphUser);
+
 	$row = mysqli_fetch_array($result);
 	mysqli_close($con);
 	return $row;
 }
-
