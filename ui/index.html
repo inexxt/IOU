@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+
+  <div class="container-fluid">
+    
+    <div id="header" class="row">
+      <button class="menu-button pull-left"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+      <button class="menu-button pull-right"><span class="glyphicon glyphicon-plus"></span></button>
+      <img src="logo.png">
+    </div>
+
+    <div id="content" class="row">
+
+      <div class="overview row" id = "owe">
+        <div class="col-xs-6">
+          <h5>You owe</h5>
+          <p class="amount">£20.12</p>
+        </div>
+        <div class="col-xs-6" id="lent">
+          <h5>You lent</h5>
+          <p class="amount">£15.20</p>
+        </div>
+      </div>
+
+      <ul class="items">
+        <li class="item owe">
+          <a href="#">
+            <div class="item-photo">
+              <img src="img/profile.jpg" class="profile-pic">
+            </div>
+            <div class="item-info">
+              <p class="name">Axel Goetz</p>
+              <p class="desc">ULU Chicken Burger</p>
+            </div>
+            <div class="item-amount">
+              £12.00
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <button id="history"></button>
+    </div>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

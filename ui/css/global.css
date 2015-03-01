@@ -1,0 +1,36 @@
+body {
+  font-size: 5vw !important;
+  background-color: #424256;
+  color: white;
+}
+
+button {
+  text-shadow: none;
+}
+
+.menu-button {
+  background-color: transparent;
+  border: none;
+  padding: 15px;
+}
+
+#header {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), transparent 90%, transparent);
+  width: 100%;
+  position: fixed;
+  /* text-align: center; */
+}
+
+#content {
+  padding: 15px;
+  padding-top: 60px;
+}
+
+#pageName {
+  text-align: center;
+  padding-top: 15px;
+}
+
+a {
+  text-decoration: none;
+}

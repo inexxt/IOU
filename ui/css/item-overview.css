@@ -1,0 +1,30 @@
+#profilep {
+	float: left;
+	display: inline;
+	padding-top: 15px;
+}
+
+#profileName {
+	text-align: center;
+}
+
+#edit {
+	float: right;
+	display: inline;
+}
+
+.item {
+	width: 100%;
+}
+
+.text {
+	float: left;
+	display: inline;
+	width: 49%;
+}
+
+.description {
+	float: right;
+	display: inline;
+	width: 49%;	
+}

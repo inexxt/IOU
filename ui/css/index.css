@@ -1,0 +1,67 @@
+a {
+  text-decoration: none;
+}
+
+.overview {
+  padding-left: 60px;
+}
+
+.items {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+}
+
+.item > a {
+  display: flex;
+}
+
+.item-photo {
+  flex: 2;
+  padding-right: 15px;
+}
+
+.item-info {
+  flex: 9 1;
+}
+
+.item-amount {
+  flex: 3 1;  
+  font-size: 100%;
+  font-weight: bold;
+}
+
+.profile-pic {
+  width: 100%;
+  border-radius: 100px;
+}
+
+.name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.desc {
+  font-size: 80%;
+}
+
+#history {
+
+}
+
+#owe {
+  color: red;
+}
+
+#lent {
+  color: green;
+}
+
+a {
+  transform: translateX(0);
+  transition: transform 1s ease;
+}

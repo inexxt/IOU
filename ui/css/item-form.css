@@ -1,0 +1,18 @@
+#container {
+	padding-top: 80px; 
+}
+
+label {
+	width: 100%;
+}
+.temp {
+	float: left;
+	display: inline;
+	width: 49%;
+}
+
+input {
+	float: right;
+	display: inline;
+	width: 49%;
+}
